@@ -11,7 +11,19 @@ class MainActivity : AppCompatActivity() {
         val currentFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_container)
         if (currentFragment == null) {
-            val fragment = CrimeFragment()
+            val fragment = CrimeListFragment.newInstance()
+
+            /**
+             * Функция FragmentManager.beginTransaction() создает и возвращает экземпляр
+             * FragmentTransaction. Класс FragmentTransaction использует динамичный интерфейс:
+             * функции, настраивающие FragmentTransaction,
+             * возвращают FragmentTransaction вместо Unit,
+             * что позволяет объединять их вызовы в цепочку.
+             * Таким образом, выделенный код в приведенном выше листинге означает:
+             * «Создать новую транзакцию фрагмента, включить в нее одну операцию add,
+             * а затем закрепить».
+             */
+
             supportFragmentManager
                 .beginTransaction()
                 .add(R.id.fragment_container, fragment)
